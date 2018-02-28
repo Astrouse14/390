@@ -23,7 +23,7 @@ def bass_model(p, q, t):
 	bass = (b ** 2 * x) / (p * y ** 2)
 	return bass
 
-def GetFatalities(input_vars):
+def get_fatalities(input_vars):
 	"""
 	This model gets the number of fatalities
 	"""
@@ -65,7 +65,7 @@ def main():
 		while j<=5:
 			random_vals.append(np.random.normal(mean_vals[j],sigma_vals[j],1))
 			j = j+1
-		results.append(GetFatalities(random_vals))
+		results.append(get_fatalities(random_vals))
 		i = i+1
 	mean_result = np.mean(results)
 	stdev_result = np.std(results)

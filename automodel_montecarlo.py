@@ -11,7 +11,7 @@ VARIABLES = [ # this array is set up to take variable name, mean, and sigma
 	['AV_FRACTION',0.1,0.02]
 ]
 
-def BassModel(p, q, t):
+def bass_model(p, q, t):
 	"""
 	This is the generic Bass model that takes p, q, and computes
 	the end result at time t periods from now
@@ -40,7 +40,7 @@ def GetFatalities(input_vars):
 	while i < 30:
 		miles_var.append(miles_var[i]*(1 + growth_var))
 		i = i + 1
-		new.append(BassModel(p_var, q_var, i))
+		new.append(bass_model(p_var, q_var, i))
 		cumulative = np.sum(new)
 		avmiles.append(cumulative * miles_var[i])
 		regmiles.append(miles_var[i] - avmiles[i])

@@ -9,7 +9,7 @@ MILES = 3130509 # millions of miles travelled from DOT
 REG_RATIO = 0.01054142011 # number of fatalities with regular miles travelled
 AV_FRACTION = 0.1 # the percentage of the ratio with automous vehicles
 
-def BassModel(p, q, t):
+def bass_model(p, q, t):
 	"""
 	This is the generic Bass model that takes p, q, and computes
 	the end result at time t periods from now
@@ -33,12 +33,12 @@ def main():
 	while i < 30:
 		miles.append(miles[i]*(1 + GROWTH))
 		i = i + 1
-		new.append(BassModel(BASS_P, BASS_Q, i))
+		new.append(bass_model(BASS_P, BASS_Q, i))
 		cumulative = numpy.sum(new)
 		avmiles.append(cumulative * miles[i])
 		regmiles.append(miles[i] - avmiles[i])
 	totaldeaths = numpy.sum(regmiles)*REG_RATIO + numpy.sum(avmiles)*REG_RATIO*AV_FRACTION
-	print int(totaldeaths)
+	print (int(totaldeaths))
 
 if __name__ == "__main__":
 	main()

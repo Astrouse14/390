@@ -2,7 +2,7 @@ reg_ratio = 0.01054142011 #global variable that looks at the
 pop_growth = 0.007
 aut_growth = 0.2
 
-def getFatalities(end_year, start_year, reg_miles, aut_miles):
+def get_fatalities(end_year, start_year, reg_miles, aut_miles):
 	i = start_year
 	tot_miles = reg_miles + aut_miles
 	aut_ratio = (0.1)*reg_ratio #a key assumption of the model
@@ -29,8 +29,8 @@ def main():
 	aut_miles=1 #we know it is a small number
 	i = 0
 	end_year = 2050
-	fatalities=getFatalities(end_year, year, reg_miles, aut_miles)
-	print end_year, int(fatalities)
+	fatalities=get_fatalities(end_year, year, reg_miles, aut_miles)
+	print (end_year, int(fatalities))
 
 if __name__ == "__main__":
 	main()

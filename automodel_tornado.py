@@ -131,6 +131,7 @@ def main():
 	ordered_matrix = GetOrdered(Matrix)
 	PlotTornado(ordered_matrix, mean_deaths)
 	plt.show()
+	# adding this on 6 march 2018 to test git sync
 
 if __name__ == "__main__":
 	main()

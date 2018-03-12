@@ -28,18 +28,36 @@ def main():
 	i = 0
 	miles = [MILES]
 	new = [0]
-	avmiles = [0]
-	regmiles = [(MILES - 1)]
+	avmiles_mid = [0]
 	while i < 30:
 		miles.append(miles[i]*(1 + GROWTH))
 		i = i + 1
-		new.append(bass_model(BASS_P, BASS_Q, i))
+		new.append(bass_model(0.003, 0.7, i))
 		cumulative = numpy.sum(new)
-		avmiles.append(cumulative * miles[i])
-		regmiles.append(miles[i] - avmiles[i])
-	totaldeaths = numpy.sum(regmiles)*REG_RATIO + numpy.sum(avmiles)*REG_RATIO*AV_FRACTION
-	print (int(totaldeaths))
-	plt.plot(avmiles)
+		avmiles_mid.append(cumulative * miles[i])
+	i = 0
+	miles = [MILES]
+	new = [0]
+	avmiles_low = [0]
+	while i < 30:
+		miles.append(miles[i]*(1 + GROWTH))
+		i = i + 1
+		new.append(bass_model(0.001, 0.5, i))
+		cumulative = numpy.sum(new)
+		avmiles_low.append(cumulative * miles[i])
+	i = 0
+	miles = [MILES]
+	new = [0]
+	avmiles_high = [0]
+	while i < 30:
+		miles.append(miles[i]*(1 + GROWTH))
+		i = i + 1
+		new.append(bass_model(0.005, 0.9, i))
+		cumulative = numpy.sum(new)
+		avmiles_high.append(cumulative * miles[i])
+	plt.plot(avmiles_mid, 'r')
+	plt.plot(avmiles_low, 'g')
+	plt.plot(avmiles_high, 'b')
 	plt.show()
 
 if __name__ == "__main__":
